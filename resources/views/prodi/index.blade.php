@@ -13,6 +13,7 @@
         <th>Kode Prodi</th>
         <th>Nama Prodi</th>
         <th>Kaprodi</th>
+        <th>Pilihan</th>
       </tr>
     </thead>
     <tbody>
@@ -22,6 +23,14 @@
         <td>{{ $item->kode_prodi }}</td>
         <td>{{ $item->nama_prodi }}</td>
         <td>{{ $item->kaprodi }}</td>
+        <td class="d-flex">
+          <a href="{{ route('prodi.edit', $item->kode_prodi)}}" class="btn btn-success px-2 py-1 mr-2">Edit</a>
+          <form action="{{ route('prodi.destroy', $item->kode_prodi)}}" method="post">
+            @csrf
+            @method("delete")
+            <button type="submit" class="btn btn-danger px-2 py-1">Hapus</button>
+          </form>
+        </td>
       </tr>
       @empty
           <tr>
